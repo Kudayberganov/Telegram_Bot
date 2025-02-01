@@ -1,0 +1,60 @@
+<!-- <!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список фильмов</title>
+</head>
+<body>
+    <h1>Список фильмов</h1>
+    <ul id="movies"></ul>
+
+    <script>
+        fetch("/movies")
+            .then(response => response.json())
+            .then(movies => {
+                const list = document.getElementById("movies");
+                movies.forEach(movie => {
+                    const li = document.createElement("li");
+                    li.textContent = `${movie.title} (${movie.year}) - ${movie.genre}`;
+                    list.appendChild(li);
+                });
+            })
+            .catch(error => console.error("Ошибка загрузки:", error));
+    </script>
+</body>
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список фильмов</title>
+</head>
+<body>
+    <h1>Список фильмов</h1>
+    <ul id="movies"></ul>
+    <script>
+        fetch("http://localhost:3000/movies") // Вместо "/movies"
+            .then(response => {
+                if (!response.ok) throw new Error("Ошибка загрузки данных");
+                return response.json();
+            })
+            .then(movies => {
+                const list = document.getElementById("movies");
+                list.innerHTML = "";
+                movies.forEach(movie => {
+                    const li = document.createElement("li");
+                    li.textContent = `${movie.code}: ${movie.title} (${movie.year}) - ${movie.genre}`;
+                    list.appendChild(li);
+                });
+            })
+            .catch(error => console.error("Ошибка загрузки:", error));
+    </script>
+    
+</body>
+</html>
