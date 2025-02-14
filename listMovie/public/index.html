@@ -37,9 +37,10 @@
 </head>
 <body>
     <h1>Список фильмов</h1>
-    <ul id="movies"></ul>
+    <b><ol id="movies"></ol></b>
     <script>
         fetch("http://localhost:3000/movies") // Вместо "/movies"
+        // fetch("/movies") // Вместо "/movies"
             .then(response => {
                 if (!response.ok) throw new Error("Ошибка загрузки данных");
                 return response.json();

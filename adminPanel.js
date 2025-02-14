@@ -175,28 +175,5 @@ bot.on("text", async (ctx) => {
     }
 });
 
-// bot.command("add", (ctx) => {
-//     ctx.reply("📥 Введите данные фильма в формате:\n\n`КОД | Название | Год | Жанр`", { parse_mode: "Markdown" });
-//     ctx.session = { state: "waiting_for_movie" };
-// });
-
-// bot.on("text", async (ctx) => {
-//     if (ctx.session?.state === "waiting_for_movie") {
-//         const parts = ctx.message.text.split("|").map(p => p.trim());
-
-//         if (parts.length !== 4) {
-//             return ctx.reply("❌ Ошибка! Введите данные в формате: `КОД | Название | Год | Жанр`");
-//         }
-
-//         const [code, title, year, genre] = parts;
-
-//         const movie = new Movie({ code, title, year, genre });
-//         await movie.save();
-
-//         ctx.reply(`✅ Фильм "${title}" (${year}) добавлен!`);
-//         ctx.session = null; // Сбрасываем состояние
-//     }
-// });
-
 bot.launch();
 console.log("🚀 Админ-бот запущен");
